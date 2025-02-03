@@ -5,10 +5,13 @@ ask prompt =
     --this prints the promt
   putStrLn prompt
   line <- getLine
-  while line/= "quit"
-    if line == ""
-      then ask prompt
-      else putStrLn ("you said: " ++ reverse line)
+  
+  --notice the indentation of the if statements
+  if line=="quit"
+    then putStrLn("quitting")
+  else if line == ""
+    then ask (prompt ++ "!")
+    else putStrLn ("you said: " ++ reverse line)
 
 main :: IO ()
 main =
