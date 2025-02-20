@@ -16,13 +16,18 @@ instance Show Person where
     show (Person name) = name -- how to format a Person record
 
 data Item
+    --added two contstructors
     = Piece
         {
             item_name :: String,
             item_performer :: Person,
             item_length_secs :: Float
         }
-    deriving (Eq)
+    | Pause
+        {
+            item_length_secs :: Int
+        }
+    deriving (Eq, Show)
 
 instance (Show Item) where
     show (Piece name performer len) =
@@ -44,22 +49,23 @@ piece2 =
         item_length_secs = 16*60+49
     }
   
-{-
+
 pause1 =
     Pause
     { 
         item_length_secs = 5
     }
--}
+
 
 main =
     do
      putStrLn "piece1 and piece2 sorted by length:"
+     --added the line below to make sure the sortTwoItems code runs
      let (shorterPiece, longerPiece) = sortTwoItems (piece1, piece2)
      putStrLn $ show shorterPiece
      putStrLn $ show longerPiece
-  --  putStr "piece1 = "
- --   putStrLn $ show piece1
+    putStr "piece1 = "
+    putStrLn $ show piece1
 --    putStr "pause1 = "
 --    putStrLn $ show pause1
 
