@@ -103,7 +103,13 @@ public class PlaylistColls {
 
         List<Float> shortItemLengths1 = new ArrayList<>();
         // TASK 5.2(b)...
-
+        //constructing a list from another one by a certain criteria, this is
+        //filtering
+        for (Item item: playlist1){
+            if(item.length_secs<20){
+                shortItemLengths1.add(item.length_secs);
+            }
+        }
 
 
 
